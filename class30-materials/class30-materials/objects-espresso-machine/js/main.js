@@ -15,6 +15,6 @@ class EspressoMachine {
    }
 
    steam() {
-    console.log ("ITS SUMMERRRRR SALES 50%%%%%%")
+    console.log ("ITS SUMMERRRRR SALESSSSSS 50%%%%%%")
    }
   }
