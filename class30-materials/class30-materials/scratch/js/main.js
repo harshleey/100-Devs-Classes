@@ -95,11 +95,12 @@ class Dog {
  }
 
  bark() {
-  if (this.size > 40) {
-   this.bark() = 'GRRRR GRRRR'
+  // let bark = this.bark()
+  if (this.size > 60) {
+   return 'GRRRR GRRRR'
   } 
   else {
-   this.bark() = "Woof! Woof!"
+   return "Woof! Woof!"
   }
  }
  describe() {
