@@ -87,27 +87,59 @@ If at the end of the game, the main character's health is greater than zero it m
 // console.log(aurora.describe());
 // console.log(glacius.describe());
 
-class Dog {
- constructor(name, species, size) {
-  this.name = name 
-  this.species = species
-  this.size = size
- }
+// class Dog {
+//  constructor(name, species, size) {
+//   this.name = name 
+//   this.species = species
+//   this.size = size
+//  }
 
- bark() {
-  // let bark = this.bark()
-  if (this.size > 60) {
-   return 'GRRRR GRRRR'
-  } 
-  else {
-   return "Woof! Woof!"
-  }
+//  bark() {
+//   // let bark = this.bark()
+//   if (this.size > 60) {
+//    return 'GRRRR GRRRR'
+//   } 
+//   else {
+//    return "Woof! Woof!"
+//   }
+//  }
+//  describe() {
+//   console.log(`${this.name} is a ${this.species} dog measuring ${this.size}`);
+//   console.log(`Look, a cat! ${this.name} barks: ${this.bark()}`);
+//  }
+// }
+
+// const fang = new Dog("Fang", "boarhound", 75);
+// console.log(fang.describe())
+
+// Account list
+// Let's build upon a previous account object exercise. A bank account is still defined by:
+
+// A name property.
+// A balance property, initially set to 0.
+// A credit method adding the value passed as an argument to the account balance.
+// A describe method returning the account description.
+// Write a program that creates three accounts: one belonging to Sean, another to Brad and the third one to Georges. These accounts are stored in an array. Next, the program credits 1000 to each account and shows its description
+
+class Account {
+ constructor(name) {
+  this.name = name
+  this.balance = 0
+ }
+ credit (value) {
+  return this.balance + value
  }
  describe() {
-  console.log(`${this.name} is a ${this.species} dog measuring ${this.size}`);
-  console.log(`Look, a cat! ${this.name} barks: ${this.bark()}`);
+  console.log(`Owner: ${this.name}, balance: ${this.credit(1000)}`)
  }
 }
 
-const fang = new Dog("Fang", "boarhound", 75);
-console.log(fang.describe())
+let sean = new Account('Sean')
+let brad= new Account('Brad')
+let georges = new Account('Georges')
+
+let people = [sean, brad, georges]
+for (person of people) {
+ person.describe()
+}
+
