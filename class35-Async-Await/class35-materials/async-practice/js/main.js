@@ -36,17 +36,18 @@
 // function houseOne(){
 //     console.log('Paper delivered to house 1')
 // }
-// function houseTwo(callback){
+
+// function houseTwo(callback) { //Note that callback is a parameter and houseThree was passed as an argument which is also a function of it's own, this ensures that houseThree only logs AFTER houseTwo logs.
 //     setTimeout(() => {
 //         console.log('Paper delivered to house 2')
 //         callback()
-//     }, 3000)
+//     })
 // }
 // function houseThree(){
 //     console.log('Paper delivered to house 3')
 // }
 // houseOne()
-// houseTwo(houseThree)
+// houseTwo(houseThree) //This is a higher order function i.e a function that takes in another function as an argument.
 
 //Code 04
 // function houseOne(){
@@ -60,23 +61,22 @@
 //         }, 4000)
 //     }, 5000)
 // }
-// houseOne()
+// houseOne() //This is called a callback hell which is essentially nesting a callback into another callback.
 
 //Code 05
 // const promise = new Promise((resolve, reject) => {
 //     const error = false
-//     if(!error){
-//         resolve('Promise has been fullfilled')
-//     }else{
-//         reject('Error: Operation has failed')
+//     if (!error) {
+//         resolve('Operation was fulfilled')
+//     } 
+//     else {
+//         reject('Operation has failed')
 //     }
 // })
-// console.log(promise)
-// promise
-//     .then(data => console.log(data))
-//     .catch(err => console.log(err))
 
-//Code 06
+// console.log(promise)
+
+//Code 06 : This wait for the second function (which has 5000ms) to log before the last one does
 // function houseOne(){
 //     return new Promise((resolve, reject) => {
 //         setTimeout(() => {
@@ -141,10 +141,13 @@
 // getPaid()
 
 //Code 08
-// async function getACuteDogPhoto(){
-//     const res = await fetch('https://dog.ceo/api/breeds/image/random')
-//     const data = await res.json()
-//     console.log(data)
-// }
-// getACuteDogPhoto()
+async function getACuteDogPhoto(){
+    const res = await fetch('https://dog.ceo/api/breeds/image/random') //This returns a promise and whatever gets resolved in our promise is stored into res
+    const data = await res.json() //Then we parse the resolved promise into the "data" variable
+    console.log(data)
+    // .catch(err) {
+
+    // }
+}
+getACuteDogPhoto()
 
