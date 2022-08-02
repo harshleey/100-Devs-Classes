@@ -1,10 +1,13 @@
+// Require files and networks to read and execute in the server
 const http = require('http');
 const fs = require('fs')
 const url = require('url');
 const querystring = require('querystring');
 const figlet = require('figlet')
 
+// Creating a server of which if you get a request, you write back a response and saving it in a variable called server
 const server = http.createServer((req, res) => {
+  // Parsing the request url (usually a "/"), then taking the pathname and saving it into the page variable
   const page = url.parse(req.url).pathname;
   const params = querystring.parse(url.parse(req.url).query);
   console.log(page);
