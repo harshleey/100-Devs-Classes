@@ -21,7 +21,7 @@
 // function houseTwo() {
 //     setTimeout(() => { console.log('Paper delivered to house 2')}, 2000)
 // }
-//     // When it gets here, it waits 3 seconds and by then housethree has logged then houseTwo logs. Even if it was 0 sec, it would have waited and this would only be different if houseThree had a higher timeout second than houseTwo did e.g if two was 0 and Three was 1000ms
+// //     // When it gets here, it waits 3 seconds and by then housethree has logged then houseTwo logs. Even if it was 0 sec, it would have waited and this would only be different if houseThree had a higher timeout second than houseTwo did e.g if two was 0 and Three was 1000ms
 
 // function houseThree() {
 //     setTimeout(() => { console.log('Paper delivered to house 3')}, 1000 )
@@ -41,7 +41,7 @@
 //     setTimeout(() => {
 //         console.log('Paper delivered to house 2')
 //         callback()
-//     })
+//     }, 2000)
 // }
 // function houseThree(){
 //     console.log('Paper delivered to house 3')
@@ -65,11 +65,11 @@
 
 //Code 05
 // const promise = new Promise((resolve, reject) => {
-//     const error = false
-//     if (!error) {
+//     const error = false //This means that there is no error
+//     if (!error) { // This saying that if there is not error, operation is fulfilled
 //         resolve('Operation was fulfilled')
 //     } 
-//     else {
+//     else { // Else, operation is failed
 //         reject('Operation has failed')
 //     }
 // })
@@ -98,7 +98,8 @@
 //         }, 2000)
 //     })
 // }
-// houseOne()
+// This essentially wil let the code work as if you used call back except that it is neater and makes it look a little synchronous
+// houseOne() //After houseOne resolves, then parse it into "data" and console log the data
 //     .then(data => console.log(data))
 //     .then(houseTwo)
 //     .then(data => console.log(data))
@@ -107,27 +108,28 @@
 //     .catch(err => console.log(err))
 
 //Code 07
-// function houseOne(){
-//     return new Promise((resolve, reject) => {
-//         setTimeout(() => {
-//             resolve('Paper delivered to house 1')
-//         }, 1000)
-//     })
-// }
-// function houseTwo(){
-//     return new Promise((resolve, reject) => {
-//         setTimeout(() => {
-//             resolve('Paper delivered to house 2')
-//         }, 5000)
-//     })
-// }
-// function houseThree(){
-//     return new Promise((resolve, reject) => {
-//         setTimeout(() => {
-//             resolve('Paper delivered to house 3')
-//         }, 2000)
-//     })
-// }
+function houseOne(){
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve('Paper delivered to house 1')
+        }, 1000)
+    })
+}
+function houseTwo(){
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve('Paper delivered to house 2')
+        }, 5000)
+    })
+}
+function houseThree(){
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve('Paper delivered to house 3')
+        }, 2000)
+    })
+}
+// Instead of chaining the promise with then and then, we could just await them by putting then in a function and calling the function
 
 // async function getPaid(){
 //     const houseOneWait = await houseOne()
@@ -144,10 +146,13 @@
 async function getACuteDogPhoto(){
     const res = await fetch('https://dog.ceo/api/breeds/image/random') //This returns a promise and whatever gets resolved in our promise is stored into res
     const data = await res.json() //Then we parse the resolved promise into the "data" variable
-    console.log(data)
+    document.querySelector('img').src = data.message
     // .catch(err) {
 
     // }
 }
-getACuteDogPhoto()
 
+
+setInterval(async() => {
+    await getACuteDogPhoto()
+}, 3000)
